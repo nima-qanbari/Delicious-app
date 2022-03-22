@@ -1,9 +1,20 @@
-import React from 'react'
+import React,{ useEffect, useState } from "react";
+
+//api
+import { getPopular } from "../services/api";
 
 const Popular = () => {
-  return (
-    <div>Popular</div>
-  )
-}
+    const [data, setData] = useState([])
+    console.log(data)
+    useEffect(() => {
+        const fetchApi = async () => {
+            setData(await getPopular())
+        }
+        
+        return fetchApi()
+    }, [])
+    
+  return <div>Popular</div>;
+};
 
-export default Popular
+export default Popular;
