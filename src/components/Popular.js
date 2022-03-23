@@ -57,17 +57,17 @@ background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
 `
 
 const Popular = () => {
-  const [data, setData] = useState([]);
-  console.log(data);
+  const [popular, setPopular] = useState([]);
+  console.log(popular);
 
   useEffect(() => {
     const fetchApi = async () => {
       const check = localStorage.getItem("popular")
 
       if(check){
-        setData(JSON.parse(check))
+        setPopular(JSON.parse(check))
       }
-      setData(await getPopular());
+      setPopular(await getPopular());
     };
     fetchApi();
   }, []);
@@ -79,12 +79,12 @@ const Popular = () => {
         <Splide 
         options={{
            perPage: 4 ,
-           arrows:false,
+          //  arrows:false,
            pagination:false,
            drag: "free",
            gap: "2.5rem",
            }}>
-          {data.map((item) => {
+          {popular.map((item) => {
             return (
               <SplideSlide key={item.recipe.label}>
                 <Card>
