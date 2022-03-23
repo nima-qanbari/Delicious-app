@@ -11,6 +11,9 @@ const BASE_URL_P = `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&
 
 //BASE_URL_veggie
 const BASE_URL_V = `https://api.edamam.com/api/recipes/v2?type=public&q=vegetables&app_id=${APP_ID}&app_key=${APP_Key}`
+
+
+
 const getPopular = async () => {
   const api = await axios.get(BASE_URL_P);
   localStorage.setItem("popular", JSON.stringify(api.data.hits))
@@ -23,4 +26,9 @@ const getVeggie =async () => {
   return api.data.hits
 }
 
-export { getPopular, getVeggie };
+const getCuisine = async (name) => {
+  const api = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=cuisine%20${name}&app_id=${APP_ID}&app_key=${APP_Key}`)
+  return api.data.hits
+}
+
+export { getPopular, getVeggie, getCuisine };
