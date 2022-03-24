@@ -83,6 +83,17 @@ const Popular = () => {
            pagination:false,
            drag: "free",
            gap: "2.5rem",
+           breakpoints: {
+             600: {
+               perPage: 1,
+             },
+             992: {
+               perPage: 2,
+             },
+             1200: {
+               perPage: 3,
+             }
+           }
            }}>
           {popular.map((item) => {
             return (

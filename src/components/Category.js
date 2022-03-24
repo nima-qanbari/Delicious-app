@@ -29,6 +29,7 @@ transform: scale(.8);
 background-color: yellow;
 transition: all .3s ease;
 
+
 h4{
     color: red;
 }
@@ -46,6 +47,16 @@ svg {
 
     h4{
         color: #fff;
+    }
+}
+
+@media (max-width: 500px) {
+    width: 55px;
+    height: 55px;
+    margin: 0 3px;
+
+    h4{
+        font-size: .6rem;
     }
 }
 `
