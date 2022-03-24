@@ -4,6 +4,7 @@ import './App.css';
 
 //componetnts
 import Category from './components/Category';
+import Search from './components/Search';
 
 //pages
 import Pages from './pages/Pages';
@@ -11,7 +12,7 @@ import Pages from './pages/Pages';
 function App() {
   return (
     <div>
-     
+        <Search />
         <Category />
         <Pages />
      

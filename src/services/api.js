@@ -31,4 +31,9 @@ const getCuisine = async (name) => {
   return api.data.hits
 }
 
-export { getPopular, getVeggie, getCuisine };
+const getSearched = async (name) => {
+  const api = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${name}&app_id=${APP_ID}&app_key=${APP_Key}`)
+  return api.data.hits
+}
+
+export { getPopular, getVeggie, getCuisine, getSearched };
