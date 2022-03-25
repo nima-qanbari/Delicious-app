@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //API_KEY
-const API_KEY = "bf4054f952324632ac4c2a2c4f482d14"
+const API_KEY = "cee0598c45ba42eba26857dd91fd65d0"
 
 const getPopular = async () => {
   const api = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=9`);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //react-router-dom
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 //api
 import { getSearched } from "../services/api";
@@ -48,8 +48,10 @@ const Searched = () => {
       {searched.map((item) => {
         return (
           <Card key={item.id}>
-            <img src={item.image} alt={item.title} />
-            <h4>{item.title}</h4>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt={item.title} />
+              <h4>{item.title}</h4>
+            </Link>
           </Card>
         );
       })}

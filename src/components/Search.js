@@ -31,6 +31,7 @@ const FormStyle = styled.form`
   
   }
   @media (max-width:500px){
+    margin: 0;
     input {
         width: 95%;
         padding:.2rem 2.7rem;

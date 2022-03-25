@@ -51,14 +51,25 @@ svg {
 }
 
 @media (max-width: 500px) {
-    width: 55px;
-    height: 55px;
+    width: 70px;
+    height: 70px;
     margin: 0 3px;
 
     h4{
         font-size: .6rem;
     }
 }
+
+@media (max-width: 380px) {
+    width: 52px;
+    height: 52px;
+    margin: 0 2px;
+
+    h4{
+        font-size: .6rem;
+    }
+}
+
 `
 
 const Category = () => {

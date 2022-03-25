@@ -15,6 +15,10 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin: 4rem 0;
+
+  @media (max-width: 500px) {
+    margin: 2rem 0;
+  }
 `;
 
 const Card = styled.div`
