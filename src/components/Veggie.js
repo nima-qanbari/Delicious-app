@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+
+//react-router-dom
+import { Link } from "react-router-dom";
 
 //api
-import { getVeggie } from '../services/api';
+import { getVeggie } from "../services/api";
 
 //splide
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -19,6 +22,7 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 
   p {
     position: absolute;
@@ -35,8 +39,6 @@ const Card = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-
   }
 
   img {
@@ -50,59 +52,63 @@ const Card = styled.div`
 `;
 
 const Gradient = styled.div`
-z-index: 3;
-position: absolute;
-width: 100%;
-height: 100%;
-background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5));
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
-  console.log(veggie);
+  console.log(veggie)
 
   useEffect(() => {
     const fetchApi = async () => {
-      const check = localStorage.getItem("veggie")
+      const check = localStorage.getItem("veggie");
 
-      if(check){
-        setVeggie(JSON.parse(check))
+      if (check) {
+        setVeggie(JSON.parse(check));
+      } else {
+        setVeggie(await getVeggie());
       }
-      setVeggie(await getVeggie());
     };
     fetchApi();
   }, []);
 
   return (
     <div>
-       <Wrapper>
+      <Wrapper>
         <h3>Our Vegetarian Picks</h3>
-        <Splide 
-        options={{
-           perPage: 3 ,
-          //  arrows:false,
-           pagination:false,
-           drag: "free",
-           gap: "2.5rem",
-           breakpoints: {
-            600: {
-              perPage: 1,
+        <Splide
+          options={{
+            perPage: 3,
+            //  arrows:false,
+            pagination: false,
+            drag: "free",
+            gap: "2.5rem",
+            breakpoints: {
+              600: {
+                perPage: 1,
+              },
+              992: {
+                perPage: 2,
+              },
+              1200: {
+                perPage: 3,
+              },
             },
-            992: {
-              perPage: 2,
-            },
-            1200: {
-              perPage: 3,
-            }
-          }
-           }}>
+          }}
+        >
           {veggie.map((item) => {
             return (
-              <SplideSlide key={item.recipe.label}>
+              <SplideSlide key={item.id}>
                 <Card>
-                  <p>{item.recipe.label}</p>
-                  <img src={item.recipe.image} alt={item.recipe.label} />
-                  <Gradient />
+                  <Link to={"/recipe/" + item.id}>
+                    <p>{item.title}</p>
+                    <img src={item.image} alt={item.title} />
+                    <Gradient />
+                  </Link>
                 </Card>
               </SplideSlide>
             );
@@ -110,7 +116,7 @@ const Veggie = () => {
         </Splide>
       </Wrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Veggie
+export default Veggie;

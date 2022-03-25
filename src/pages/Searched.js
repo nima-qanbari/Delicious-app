@@ -47,9 +47,9 @@ const Searched = () => {
     <Grid>
       {searched.map((item) => {
         return (
-          <Card key={item.recipe.label}>
-            <img src={item.recipe.image} alt={item.recipe.label} />
-            <h4>{item.recipe.label}</h4>
+          <Card key={item.id}>
+            <img src={item.image} alt={item.title} />
+            <h4>{item.title}</h4>
           </Card>
         );
       })}

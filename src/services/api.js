@@ -1,39 +1,28 @@
 import axios from "axios";
 
-//APP_ID
-const APP_ID = "f3c4d543";
-
-//apikey
-const APP_Key = "1ad54cafe3269cea23810273038d8111";
-
-//BASE_URL_popular
-const BASE_URL_P = `https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=${APP_ID}&app_key=${APP_Key}`;
-
-//BASE_URL_veggie
-const BASE_URL_V = `https://api.edamam.com/api/recipes/v2?type=public&q=vegetables&app_id=${APP_ID}&app_key=${APP_Key}`
-
-
+//API_KEY
+const API_KEY = "bf4054f952324632ac4c2a2c4f482d14"
 
 const getPopular = async () => {
-  const api = await axios.get(BASE_URL_P);
-  localStorage.setItem("popular", JSON.stringify(api.data.hits))
-  return api.data.hits;
+  const api = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=9`);
+  localStorage.setItem("popular", JSON.stringify(api.data.recipes))
+  return api.data.recipes
 };
 
 const getVeggie =async () => {
-  const api = await axios.get(BASE_URL_V)
-  localStorage.setItem("veggie", JSON.stringify(api.data.hits))
-  return api.data.hits
+  const api = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=9&tags=vegetarian`)
+  localStorage.setItem("veggie", JSON.stringify(api.data.recipes))
+  return api.data.recipes
 }
 
 const getCuisine = async (name) => {
-  const api = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=cuisine%20${name}&app_id=${APP_ID}&app_key=${APP_Key}`)
-  return api.data.hits
+  const api = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${name}`)
+  return api.data.results
 }
 
 const getSearched = async (name) => {
-  const api = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${name}&app_id=${APP_ID}&app_key=${APP_Key}`)
-  return api.data.hits
+  const api = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}`)
+  return api.data.results
 }
 
 export { getPopular, getVeggie, getCuisine, getSearched };
