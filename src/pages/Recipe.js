@@ -7,8 +7,11 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const DetaiWrapper = styled.div`
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin: 5rem 0;
+   
+  @media (max-width: 500px) {
+    margin: 2.5rem 0;
+  }
 
   img {
     display: block;
@@ -24,13 +27,20 @@ const DetaiWrapper = styled.div`
   h2 {
     margin-bottom: 2rem;
     color: #fff;
-    font-size: clamp(1.1rem, 3vw, 1.5rem)
+    font-size: clamp(.9rem, 3vw, 1.5rem)
   }
 
   li {
-    font-size: 1.2rem;
+    font-size: clamp(.8rem , 2vw, 1.2rem);
     line-height: 2.5rem;
     color: #fff;
+  }
+
+  h4 {
+    font-size: clamp(.8rem, 2.5vw, 1.2rem);
+    text-align: justify;
+    line-height: 1.5;
+    font-weight: 400;
   }
 
   ul {
@@ -43,6 +53,7 @@ const Button = styled.button`
   border: 1px solid black;
   margin-right: 2rem;
   font-weight: 600;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     padding: .9rem .9rem;
@@ -52,8 +63,14 @@ const Button = styled.button`
 
   @media (max-width: 576px) {
     padding: .5rem .5rem;
+    font-size: 13px;
     margin-right: .6rem;
     font-weight: 500;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 11px;
+    margin-right: .4rem;
   }
   `;
 
@@ -97,7 +114,7 @@ const Recipe = () => {
           Ingredients
         </Button>
         {activeTab === "Instructions" && (
-          <div>
+          <div style={{marginTop: "2rem"}}>
             <h4 dangerouslySetInnerHTML={{ __html: details.summary }}></h4>
             <h4 dangerouslySetInnerHTML={{ __html: details.instructions }}></h4>
           </div>

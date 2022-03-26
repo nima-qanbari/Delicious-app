@@ -13,6 +13,10 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 3rem;
+
+  @media (max-width: 500px) {
+    gap: 2rem;
+  }
 `;
 
 const Card = styled.div`
