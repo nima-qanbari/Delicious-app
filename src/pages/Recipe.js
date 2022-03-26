@@ -79,7 +79,6 @@ const Button = styled.button`
 const Recipe = () => {
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("Instructions");
-  console.log(details);
 
   let params = useParams();
 
@@ -89,7 +88,6 @@ const Recipe = () => {
         `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=cee0598c45ba42eba26857dd91fd65d0`
       );
       const detailData = await data.json();
-      console.log(detailData)
       setDetails(detailData);
     };
     fetchDetails();

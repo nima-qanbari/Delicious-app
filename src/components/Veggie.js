@@ -65,7 +65,6 @@ const Gradient = styled.div`
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
-  console.log(veggie)
 
   useEffect(() => {
     const fetchApi = async () => {
