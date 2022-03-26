@@ -36,7 +36,7 @@ const Card = styled.div`
 const Cuisine = () => {
   const [cuisine, setCuisine] = useState([]);
   const params = useParams();
-  console.log(cuisine);
+ 
   useEffect(() => {
     const fetchApi = async () => {
       setCuisine(await getCuisine(params.type));
